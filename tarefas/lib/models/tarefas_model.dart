@@ -2,7 +2,7 @@ import 'enums_model.dart';
 
 class Tarefas {
   int? id;
-  String? descricao;
+  String? nomeTarefa;
   bool? estado;
   Prioridade? prioridade;
   List<String>? tags;
