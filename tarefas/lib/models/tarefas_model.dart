@@ -7,6 +7,8 @@ class Tarefas {
   Prioridade? prioridade;
   List<String>? tags;
   String? nota;
-  double? progracao;
+  double? progrecao;
   PadraoRepeticao? padraoRepeticao;
+
+  Tarefas({this.id, this.nomeTarefa, this.estado = true, this.nota});
 }
