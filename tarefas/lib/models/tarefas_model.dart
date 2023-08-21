@@ -1,6 +1,6 @@
 import 'enums_model.dart';
 
-class tarefas {
+class Tarefas {
   int? id;
   String? descricao;
   bool? estado;
