@@ -48,6 +48,7 @@ class DatabaseHelper {
   Future<void> _createDb(Database db, int version) async {
     await db.execute(
         'CREATE TABLE $tarefaTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colNomeTarefa TEXT, $colEstado BIT)');
+    print("TABLE CRIADA");
   }
 
   //Funcao insert no banco
@@ -78,7 +79,7 @@ class DatabaseHelper {
   }
 
   //retorna um contato pelo id
-  Future<Tarefas> getTarefas(int id) async {
+  Future<Tarefas?> getTarefasPorId(int id) async {
     Database db = await this.database;
     List<Map> maps = await db.query(tarefaTable,
         columns: [colId, colNomeTarefa, colEstado],
@@ -88,7 +89,7 @@ class DatabaseHelper {
     if (maps.length > 0) {
       return Tarefas.fromMap(maps.first.cast());
     } else {
-      return null!;
+      return null;
     }
   }
 
@@ -104,7 +105,7 @@ class DatabaseHelper {
 
   //Retorna todos os contatos da base
 
-  Future<List<Tarefas>> getContatos() async {
+  Future<List<Tarefas>> getTarefas() async {
     Database db = await this.database;
     var resultado = await db.query(tarefaTable);
 

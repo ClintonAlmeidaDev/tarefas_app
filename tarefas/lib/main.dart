@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'helpers/database_helpers.dart';
+import 'models/tarefas_model.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -56,6 +59,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  DatabaseHelper db = DatabaseHelper();
+  Tarefas tarefas = Tarefas(1, "Estudar", true);
 
   void _incrementCounter() {
     setState(() {
@@ -64,6 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
+      print("Vai incluir tarefa");
+      exibeTarefa(1);
+      print(db.getTarefasPorId(2));
+      print("Já incluiu tarefa");
       _counter++;
     });
   }
@@ -122,4 +131,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+Future<void> exibeTarefa(int id) async {
+  DatabaseHelper db = DatabaseHelper();
+  Tarefas? tarefa = await db.getTarefasPorId(id);
+  print(tarefa);
 }

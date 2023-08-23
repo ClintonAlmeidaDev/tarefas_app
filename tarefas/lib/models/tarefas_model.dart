@@ -13,7 +13,7 @@ class Tarefas {
   Tarefas(int id, String nomeTarefa, bool estado) {
     this.id = id;
     this.nomeTarefa = nomeTarefa;
-    this.estado = true;
+    this.estado = estado;
   }
 
   Map<String, dynamic> toMap({bool excludeId = false}) {
@@ -31,7 +31,7 @@ class Tarefas {
   Tarefas.fromMap(Map<String, dynamic> map) {
     id = map['id'];
     nomeTarefa = map['nomeTarefa'];
-    estado = map['estado'];
+    estado = map['estado'] == 1;
   }
 
   @override
