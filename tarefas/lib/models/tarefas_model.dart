@@ -10,7 +10,7 @@ class Tarefas {
   double? progrecao;
   PadraoRepeticao? padraoRepeticao;
 
-  Tarefas(int id, String nomeTarefa, bool estado) {
+  Tarefas({required int id, required String nomeTarefa, required bool estado}) {
     this.id = id;
     this.nomeTarefa = nomeTarefa;
     this.estado = estado;

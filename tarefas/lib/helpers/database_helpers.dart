@@ -36,7 +36,7 @@ class DatabaseHelper {
   //Inicializa a base de dados
   Future<Database> initializeDatabase() async {
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = directory.path + 'tarefasTableBase.db';
+    String path = '${directory.path}tarefasTableBase.db';
 
     var tarefasTable =
         await openDatabase(path, version: 1, onCreate: _createDb);

@@ -31,6 +31,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   DatabaseHelper db = DatabaseHelper();
+  final _form = GlobalKey<FormState>();
+  final _tarefaDescricao = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +45,30 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         backgroundColor: Colors.lightBlue[800],
         centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
+        child: SingleChildScrollView(
+          // Adicionado SingleChildScrollView
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Form(
+                key: _form,
+                child: TextFormField(
+                  controller: _tarefaDescricao,
+                  style: const TextStyle(fontSize: 22),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Nome da Tarefa",
+                    prefixIcon: Icon(Icons.event_available),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
